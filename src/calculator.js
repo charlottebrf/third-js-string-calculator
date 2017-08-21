@@ -1,18 +1,17 @@
 export class Calculator {
   add(string) {
     let splitString = string.split(",")
-    let integers = this.stringChecker(splitString)
+    let integers = this.stringConverter(splitString)
     return integers.reduce(( acc, cur ) => acc + cur, 0);
   }
 
-  stringChecker(splitString) {
+  stringConverter(splitString) {
     let maybeNumbers = []
     splitString.forEach(char => {
       if ( !char ) {
         maybeNumbers.push(0);
       } else {
-        let integer = parseInt(char)
-        maybeNumbers.push(integer);
+        maybeNumbers.push(parseInt(char));
       }
     })
     return maybeNumbers
