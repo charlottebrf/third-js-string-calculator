@@ -1,20 +1,20 @@
 export class Calculator {
   add(string) {
-    return this.stringChecker(string)
+    let splitString = string.split(",")
+    let integers = this.stringChecker(splitString)
+    return integers.reduce(( acc, cur ) => acc + cur, 0);
   }
 
-  stringChecker(string) {
-    if ( !string ) {
-      return 0;
-    } else {
-      let splitString = string.split(",")
-      splitString = this.convertToInteger(splitString)
-      return splitString.reduce(
-        ( acc, cur ) => acc + cur, 0);
+  stringChecker(splitString) {
+    let maybeNumbers = []
+    splitString.forEach(char => {
+      if ( !char ) {
+        maybeNumbers.push(0);
+      } else {
+        let integer = parseInt(char)
+        maybeNumbers.push(integer);
       }
-    }
-
-    convertToInteger(splitString) {
-      return [...splitString].map(maybeNumber => parseInt(maybeNumber, 10))
-    }
+    })
+    return maybeNumbers
   }
+}
