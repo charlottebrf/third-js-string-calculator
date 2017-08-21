@@ -19,4 +19,13 @@ describe('Calculator', () => {
   it('handles a two digit string', () => {
     expect(calculator.add("1,2")).to.equal(3)
   })
+
+  it('handles more than one delimeter', () => {
+    expect(calculator.add("1\n2,3")).to.equal(6)
+  })
+
+  it('handles numbers split by multiple delimeters', () => {
+    expect(calculator.add("//;\n1;2")).to.equal(3)
+    expect(calculator.add("//[*][%]\n1*2%3")).to.equal(6)
+  })
 })

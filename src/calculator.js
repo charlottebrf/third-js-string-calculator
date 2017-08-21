@@ -1,6 +1,6 @@
 export class Calculator {
   add(string) {
-    let splitString = string.split(",")
+    let splitString = this.delimiters(string)
     let integers = this.stringConverter(splitString)
     return integers.reduce(( acc, cur ) => acc + cur, 0);
   }
@@ -15,5 +15,9 @@ export class Calculator {
       }
     })
     return maybeNumbers
+  }
+
+  delimiters(string) {
+    return string.split(/[^a-zA-Z0-9-]+/)
   }
 }
