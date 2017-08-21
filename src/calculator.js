@@ -4,7 +4,7 @@ export class Calculator {
   }
 
   stringChecker(string) {
-    if ( string == "" ) {
+    if ( !string ) {
       return 0;
     }
   }
