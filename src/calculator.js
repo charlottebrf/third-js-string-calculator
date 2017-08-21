@@ -6,8 +6,6 @@ export class Calculator {
   stringChecker(string) {
     if ( !string ) {
       return 0;
-    } else if (string.length == 1) {
-      return parseInt(string, 10)
     } else {
       let splitString = string.split(",")
       splitString = this.convertToInteger(splitString)
