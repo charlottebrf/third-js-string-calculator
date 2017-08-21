@@ -6,6 +6,8 @@ export class Calculator {
   stringChecker(string) {
     if ( !string ) {
       return 0;
+    } else {
+      return parseInt(string, 10)
     }
   }
 }
