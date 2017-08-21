@@ -34,11 +34,14 @@ describe('Calculator', () => {
   })
 
   it("raises an error for a negative number", () => {
-    expect.throws(calculator.add("-1;2"), Error, "Error: negatives not allowed: -1")
-    // expect(calculator.add("-1;2")).throw('negatives not allowed: -1')
+    expect( () => { calculator.add("-1;2") }).to.throw(Error, /negatives not allowed/)
   })
 
   it("raises an for multiple negative numbers", () => {
-    expect(calculator.add("3, -1, -2, 4")).throw('Error: negatives not allowed: -1, -2')
+    expect( () => { calculator.add("3, -1, -2, 4") }).to.throw(Error, /negatives not allowed/)
+  })
+
+  xit("ignores numbers with a value of 1000+", () => {
+    expect(calculator.add("//[]\n1004,2,3")).to.equal(5)
   })
 })
