@@ -1,23 +1,30 @@
 export class Calculator {
   add(string) {
-    let splitString = this.delimiters(string)
-    let integers = this.stringConverter(splitString)
+    let integers = this.delimiters(string)
     return integers.reduce(( acc, cur ) => acc + cur, 0);
   }
 
-  stringConverter(splitString) {
-    let maybeNumbers = []
-    splitString.forEach(char => {
-      if ( !char ) {
-        maybeNumbers.push(0);
-      } else {
-        maybeNumbers.push(parseInt(char));
+  delimiters(string) {
+    let splitString = string.split("")
+    let integers = []
+    splitString = this.stringConverter(splitString)
+    splitString.forEach(maybeNumber => {
+      if ( Number.isInteger(maybeNumber) ) {
+        integers.push(maybeNumber)
       }
     })
-    return maybeNumbers
+    return integers
   }
 
-  delimiters(string) {
-    return string.split(/[^a-zA-Z0-9-]+/)
+  stringConverter(splitString) {
+    let convertedStrings = []
+    splitString.forEach(char => {
+      if ( !char ) {
+        convertedStrings.push(0);
+      } else {
+        convertedStrings.push(parseInt(char))
+      }
+    })
+    return convertedStrings
   }
 }

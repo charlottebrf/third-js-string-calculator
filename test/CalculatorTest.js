@@ -28,4 +28,8 @@ describe('Calculator', () => {
     expect(calculator.add("//;\n1;2")).to.equal(3)
     expect(calculator.add("//[*][%]\n1*2%3")).to.equal(6)
   })
+
+  it('handles strings including delimeters which don\'t split numbers', () => {
+    expect(calculator.add("//[]\n123")).to.equal(6)
+  })
 })
