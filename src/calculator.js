@@ -6,25 +6,19 @@ export class Calculator {
 
   delimiters(string) {
     let splitString = string.split("")
-    let integers = []
-    splitString = this.stringConverter(splitString)
-    splitString.forEach(maybeNumber => {
-      if ( Number.isInteger(maybeNumber) ) {
-        integers.push(maybeNumber)
-      }
-    })
-    return integers
+    splitString = this.converter(splitString)
+    return splitString.filter((maybeNumber) => Number.isInteger(maybeNumber))
   }
 
-  stringConverter(splitString) {
-    let convertedStrings = []
+  converter(splitString) {
+    let maybeIntegers = []
     splitString.forEach(char => {
       if ( !char ) {
-        convertedStrings.push(0);
+        maybeIntegers.push(0);
       } else {
-        convertedStrings.push(parseInt(char))
+        maybeIntegers.push(parseInt(char))
       }
     })
-    return convertedStrings
+    return maybeIntegers
   }
 }
