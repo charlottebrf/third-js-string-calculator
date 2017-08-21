@@ -5,7 +5,7 @@ describe('Calculator', () => {
   let calculator
 
   beforeEach(() => {
-     calculator = new Calculator()
+    calculator = new Calculator()
   })
 
   it('handles an empty string', () => {
@@ -14,5 +14,9 @@ describe('Calculator', () => {
 
   it('handles a single digit string', () => {
     expect(calculator.add("1")).to.equal(1)
+  })
+
+  it('handles a two digit string', () => {
+    expect(calculator.add("1,2")).to.equal(3)
   })
 })
