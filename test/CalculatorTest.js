@@ -41,7 +41,7 @@ describe('Calculator', () => {
     expect( () => { calculator.add("3, -1, -2, 4") }).to.throw(Error, /negatives not allowed/)
   })
 
-  xit("ignores numbers with a value of 1000+", () => {
+  it("ignores numbers with a value of 1000+", () => {
     expect(calculator.add("//[]\n1004,2,3")).to.equal(5)
   })
 })

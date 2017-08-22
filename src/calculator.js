@@ -5,10 +5,11 @@ export class Calculator {
   }
 
   delimiters(string) {
-    let splitString = string.split("")
+    let splitStringWithoutThousands = this.removeThousands(string)
+    let splitString = splitStringWithoutThousands.split("")
     this.checkForNegatives(splitString)
-    splitString = this.converter(splitString)
-    return splitString.filter((maybeNumber) => Number.isInteger(maybeNumber))
+    let maybeNumbers = this.converter(splitString)
+    return maybeNumbers.filter((maybeNumber) => Number.isInteger(maybeNumber))
   }
 
   converter(splitString) {
@@ -33,6 +34,10 @@ export class Calculator {
     if (negatives.length > 0) {
       throw new Error(`negatives not allowed: ${negatives.join(", ")}`)
     }
+  }
+
+  removeThousands(string) {
+    return string.replace(/[1-9]\d{3,}/, "")
   }
 
 }
