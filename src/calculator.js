@@ -5,8 +5,7 @@ export class Calculator {
   }
 
   delimiters(string) {
-    let splitStringWithoutThousands = this.removeThousands(string)
-    let splitString = splitStringWithoutThousands.split("")
+    let splitString = this.removeThousands(string).split("")
     this.checkForNegatives(splitString)
     let maybeNumbers = this.converter(splitString)
     return maybeNumbers.filter((maybeNumber) => Number.isInteger(maybeNumber))
