@@ -1,17 +1,17 @@
 export class Calculator {
   add(string) {
-    let integers = this.delimiters(string)
+    let integers = this._delimiters(string)
     return integers.reduce(( acc, cur ) => acc + cur, 0);
   }
 
-  delimiters(string) {
-    let splitString = this.removeThousands(string).split("")
-    this.checkForNegatives(splitString)
-    let maybeNumbers = this.converter(splitString)
-    return maybeNumbers.filter((maybeNumber) => Number.isInteger(maybeNumber))
+  _delimiters(string) {
+    let splitString = this._removeThousands(string).split("")
+    this._checkForNegatives(splitString)
+    let maybeIntegers = this._converter(splitString)
+    return maybeIntegers.filter((maybeIntegers) => Number.isInteger(maybeIntegers))
   }
 
-  converter(splitString) {
+  _converter(splitString) {
     let maybeIntegers = []
     splitString.forEach(char => {
       if ( !char ) {
@@ -23,7 +23,7 @@ export class Calculator {
     return maybeIntegers
   }
 
-  checkForNegatives(splitString) {
+  _checkForNegatives(splitString) {
     let negatives = []
     for (const [index, value] of splitString.entries()) {
       if (value == "-") {
@@ -35,8 +35,7 @@ export class Calculator {
     }
   }
 
-  removeThousands(string) {
+  _removeThousands(string) {
     return string.replace(/[1-9]\d{3,}/, "")
   }
-
 }
