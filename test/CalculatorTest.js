@@ -37,7 +37,7 @@ describe('Calculator', () => {
     expect( () => { calculator.add("-1;2") }).to.throw(Error, /negatives not allowed/)
   })
 
-  it("raises an for multiple negative numbers", () => {
+  it("raises an error for multiple negative numbers", () => {
     expect( () => { calculator.add("3, -1, -2, 4") }).to.throw(Error, /negatives not allowed/)
   })
 

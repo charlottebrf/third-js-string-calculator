@@ -10,7 +10,7 @@ export class Calculator {
     let maybeIntegers = this._converter(splitString)
     return maybeIntegers.filter((maybeIntegers) => Number.isInteger(maybeIntegers))
   }
-
+  
   _converter(splitString) {
     let maybeIntegers = []
     splitString.forEach(char => {
